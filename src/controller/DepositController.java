@@ -10,9 +10,10 @@ import model.AccountModel;
 import model.AccountConnectionsModel;
 
 
-public class DepositController {
-
-    public void render(SubmitData submitData) {
+public class DepositController 
+{
+    public void render(SubmitData submitData) 
+    {
         String userId = submitData.getData("userId");
         String instanceToken = submitData.getData("instanceToken");
         ArrayList<String> userConnection;
@@ -33,7 +34,8 @@ public class DepositController {
         Core.instance().renderPage("DepositPage", renderData);
     }
     
-    public SubmitResult processDepositRequest(SubmitData submitData) {
+    public SubmitResult processDepositRequest(SubmitData submitData) 
+    {
         SubmitResult result = new SubmitResult();
 
         String userId = submitData.getData("userId");
@@ -59,7 +61,6 @@ public class DepositController {
         
 
     }
-    
 }
 
 

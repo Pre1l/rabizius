@@ -27,18 +27,22 @@ import data.SubmitData;
 import data.SubmitResult;
 import view.browser.Browser;
 
-public class RegisterPage extends Page {
+public class RegisterPage extends Page 
+{
     private JLabel status = new JLabel("");
     private boolean dataValid = true;
     PasswordTextField passwordTextField1;
     PasswordTextField passwordTextField2;
     protected BufferedImage backgroundImage = AssetLoader.loadBufferedImage(AssetLoader.BACKGROUND_CIRCULAR_LINES_PATH);
     JTextField usernameTextField;
-    public RegisterPage(Browser browser) {
+
+    public RegisterPage(Browser browser) 
+    {
         super(browser);
     }
 
-    public Page render(RenderData renderData) {
+    public Page render(RenderData renderData) 
+    {
         status.setForeground(SOFT_RED);
         this.setLayout(new GridBagLayout());
         browser.setMinimumSize(new Dimension(600,700));
@@ -198,7 +202,8 @@ public class RegisterPage extends Page {
         return this;
     }
     
-    private void handleUpdate(DocumentEvent e) {
+    private void handleUpdate(DocumentEvent e) 
+    {
         if (usernameTextField.getText().length() > 18 && usernameTextField.getText().length() < 5) {
             status.setText("Username must be between 5 and 18 characters long.");
             dataValid = false;
@@ -214,13 +219,15 @@ public class RegisterPage extends Page {
         }
     }
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
     }
-    private class PasswordTextField extends JPanel {
+    private class PasswordTextField extends JPanel 
+    {
         private JPasswordField passwordTextField;
         private JButton togglePasswordBtn;
 
@@ -279,7 +286,8 @@ public class RegisterPage extends Page {
             this.add(passwordTextField);
         }
 
-        public JPasswordField getPasswordField() {
+        public JPasswordField getPasswordField() 
+        {
             return passwordTextField;
         }
     }

@@ -1,5 +1,7 @@
 package model;
 
-public enum Status {
-    COMPLETED, FAILED
+public enum Status 
+{
+    COMPLETED, 
+    FAILED
 }

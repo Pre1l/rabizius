@@ -1,6 +1,5 @@
 package controller;
 
-
 import core.Core;
 import data.RenderData;
 import data.SubmitData;
@@ -9,11 +8,13 @@ import data.SubmitResult;
 /**
  * Controls the login page requests
  */
-public class LoginController {
+public class LoginController 
+{
     /**
      * Renders the login page
      */
-    public void render() {
+    public void render() 
+    {
         // Data for the view/page
         RenderData renderData = new RenderData();
         renderData.setData("title", "Login");
@@ -27,7 +28,8 @@ public class LoginController {
      * @param submitData the submit data from the login request like username and password
      * @return the result data for view to react, like errors or if the login was successful
      */
-    public SubmitResult processLoginRequest(SubmitData submitData) {
+    public SubmitResult processLoginRequest(SubmitData submitData) 
+    {
         SubmitResult result = new SubmitResult();
         result = AuthController.login(submitData.getData("username"), submitData.getData("password"));
         return result;

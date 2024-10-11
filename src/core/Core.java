@@ -10,24 +10,28 @@ import view.browser.Browser;
 /**
  * Core of the Rabizius Banking Software
  */
-public class Core {
+public class Core
+{
     private static Core instance;
 
     private Router router;
     private Browser browser;
 
-    private Core() {
+    private Core() 
+    {
         
     }
 
-    public static void shutdown() {
+    public static void shutdown() 
+    {
         Model.disconnect();
         instance.browser.dispose();
         instance.router = null;
         System.exit(0);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Init core singleton
         Core.init();
 
@@ -38,7 +42,8 @@ public class Core {
     /**
      * Initializes the core
      */
-    private static void init() {
+    private static void init() 
+    {
         instance = new Core();
         instance.startRouting();
         instance.connect();
@@ -47,14 +52,16 @@ public class Core {
     /**
      * Connects client to the db
      */
-    private void connect() {
+    private void connect() 
+    {
         Model.connect();
     }
 
     /**
      * Starts the router and browser
      */
-    private void startRouting() {
+    private void startRouting() 
+    {
         Browser.init();
         browser = new Browser();
         router = new Router();
@@ -64,7 +71,8 @@ public class Core {
      * Retrieves the core instance of the singleton design pattern
      * @return the core instance
      */
-    public static Core instance() {
+    public static Core instance() 
+    {
         return instance;
     }
 
@@ -72,11 +80,13 @@ public class Core {
      * Redirects the users browser to a new page/route over the router
      * @param route the route that the users browser should be redirected to
      */
-    public void redirect(String route) {
+    public void redirect(String route) 
+    {
         router.redirect(route);
     }
 
-    public void redirect(String route, SubmitData submitData) {
+    public void redirect(String route, SubmitData submitData) 
+    {
         router.redirect(route, submitData);
     }
 
@@ -86,7 +96,8 @@ public class Core {
      * @param submitData the submit data that the desired controller should work with
      * @return the submit result with the outcome/result that the controller returned
      */
-    public SubmitResult submit(String route, SubmitData submitData) {
+    public SubmitResult submit(String route, SubmitData submitData) 
+    {
         return router.submit(route, submitData);
     }
 
@@ -95,7 +106,8 @@ public class Core {
      * @param page the page that should be rendered
      * @param renderData the render data for the page to use
      */
-    public void renderPage(String page, RenderData renderData) {
+    public void renderPage(String page, RenderData renderData) 
+    {
         browser.renderPage(page, renderData);
     }
 
@@ -103,7 +115,8 @@ public class Core {
      * Displays a error in form of a dialog popup window to the user
      * @param errorMessage The error message that should be displayed
      */
-    public void displayErrorDialog(String errorMessage) {
+    public void displayErrorDialog(String errorMessage) 
+    {
         browser.displayErrorDialog(errorMessage);
     }
 }

@@ -12,12 +12,15 @@ import core.Core;
 import data.RenderData;
 import view.browser.Browser;
 
-public class DeleteAccountPage extends Page {
-    public DeleteAccountPage(Browser browser) {
+public class DeleteAccountPage extends Page 
+{
+    public DeleteAccountPage(Browser browser) 
+    {
         super(browser);
     }
 
-    public Page render(RenderData renderData) {
+    public Page render(RenderData renderData) 
+    {
         JDialog dialog = new JDialog(browser, "Confirm Delete", true);
         dialog.setLayout(new BorderLayout());
         dialog.setSize(400, 200);

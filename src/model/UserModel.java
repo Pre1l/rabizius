@@ -4,8 +4,10 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class UserModel extends Model {
-    public static boolean doesUsernameExist(String username) {
+public final class UserModel extends Model 
+{
+    public static boolean doesUsernameExist(String username) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("username", username);
         ResultSet result = getData("users", new String[]{}, conditions, true);
@@ -18,7 +20,8 @@ public final class UserModel extends Model {
         return false;
     }
 
-    public static String getUserIdByUsername(String username) {
+    public static String getUserIdByUsername(String username) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("username", username);
         ResultSet result = getData("users", new String[]{"user_id"}, conditions, true);
@@ -30,7 +33,8 @@ public final class UserModel extends Model {
         return "";
     }
 
-    public static boolean isUserDeleted(String userId) {
+    public static boolean isUserDeleted(String userId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
         ResultSet result = getData("users", new String[]{"deleted_at"}, conditions, true);
@@ -42,7 +46,8 @@ public final class UserModel extends Model {
         return false;
     }
 
-    public static boolean updatePassword(String userId, String rawPassword) {
+    public static boolean updatePassword(String userId, String rawPassword) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
 
@@ -52,7 +57,8 @@ public final class UserModel extends Model {
         return setData("users", conditions, updates);
     }
 
-    public static boolean updateUsername(String userId, String username) {
+    public static boolean updateUsername(String userId, String username) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
 
@@ -62,7 +68,8 @@ public final class UserModel extends Model {
         return setData("users", conditions, updates);
     }
 
-    public static boolean createUser(String username, String password) {
+    public static boolean createUser(String username, String password) 
+    {
         Map<String, String> data = new HashMap<>();
         data.put("username", username);
         data.put("password", password);
@@ -70,7 +77,8 @@ public final class UserModel extends Model {
         return addData("users", data);
     }
 
-    public static boolean deleteUser(String userId) {
+    public static boolean deleteUser(String userId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
 
@@ -80,7 +88,8 @@ public final class UserModel extends Model {
         return setData("users", conditions, updates);
     }
 
-    public static String getUsername(String userId) {
+    public static String getUsername(String userId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
         ResultSet result = getData("users", new String[]{"username"}, conditions, true);
@@ -92,7 +101,8 @@ public final class UserModel extends Model {
         return null;
     }
 
-    public static boolean verifyPassword(String rawPassword, String userId) {
+    public static boolean verifyPassword(String rawPassword, String userId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("user_id", userId);
         ResultSet result = getData("users", new String[]{"password"}, conditions, true);

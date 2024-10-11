@@ -10,18 +10,18 @@ import java.util.ArrayList;
 import model.AccountConnectionsModel;
 import model.AccountModel;
 
-
 /**
  * Controls the register page requests
  */
 
-public class WithdrawController {
-
+public class WithdrawController 
+{
     /**
      * Renders the withdraw page
      */
 
-    public void render(SubmitData submitData) {
+    public void render(SubmitData submitData) 
+    {
         String userId = submitData.getData("userId");
         String instanceToken = submitData.getData("instanceToken");
         ArrayList<String> userConnection;
@@ -29,12 +29,10 @@ public class WithdrawController {
         RenderData renderData = new RenderData();
 
         
-        if (ControllerCore.authenticateUserInstance(userId, instanceToken)) {
-            userConnection = AccountConnectionsModel.getUserConnections(userId);
-            accountId = userConnection.get(0);
-        } else {
-            return;
-        }
+        if (!ControllerCore.authenticateUserInstance(userId, instanceToken)) return;
+
+        userConnection = AccountConnectionsModel.getUserConnections(userId);
+        accountId = userConnection.get(0);
 
         renderData.setData("title", "Withdraw");
         renderData.setData("balance", Double.toString(AccountModel.getBalance(accountId)));
@@ -48,7 +46,8 @@ public class WithdrawController {
      * @param submitData the submit data from the login request like username and password
      * @return the result data for view to react, like errors or if the login was successful
      */
-    public SubmitResult processWithdrawRequest(SubmitData submitData) {
+    public SubmitResult processWithdrawRequest(SubmitData submitData) 
+    {
         SubmitResult result = new SubmitResult();
         
         if (submitData == null) {

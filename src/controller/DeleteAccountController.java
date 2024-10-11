@@ -8,8 +8,10 @@ import model.AccountConnectionsModel;
 import model.AccountModel;
 import model.UserModel;
 
-public class DeleteAccountController {
-    public void render(SubmitData submitData) {
+public class DeleteAccountController 
+{
+    public void render(SubmitData submitData) 
+    {
         String userId = submitData.getData("userId");
         String instanceToken = submitData.getData("instanceToken");
         RenderData renderData = new RenderData();
@@ -24,11 +26,13 @@ public class DeleteAccountController {
         Core.instance().renderPage("DeleteAccountPage", renderData);
     }
 
-    public SubmitResult processDeleteAccountRequest(SubmitData submitData) {
+    public SubmitResult processDeleteAccountRequest(SubmitData submitData) 
+    {
         return deleteAccount(submitData);
     }
 
-    private SubmitResult deleteAccount(SubmitData submitData) {
+    private SubmitResult deleteAccount(SubmitData submitData) 
+    {
         SubmitResult result = new SubmitResult();
 
         String instanceToken = submitData.getData("instanceToken");

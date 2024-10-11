@@ -23,14 +23,17 @@ import data.SubmitData;
 import data.SubmitResult;
 import view.browser.Browser;
 
-public class DepositPage extends Page {
+public class DepositPage extends Page 
+{
     protected BufferedImage backgroundImage = AssetLoader.loadBufferedImage(AssetLoader.BACKGROUND_SQUARED_PILLARS_PATH);
 
-    public DepositPage(Browser browser) {
+    public DepositPage(Browser browser) 
+    {
         super(browser);
     }
 
-    public Page render(RenderData renderData) {
+    public Page render(RenderData renderData) 
+    {
         setLayout(new BorderLayout());
         browser.setMinimumSize(new Dimension(1280, 720));
         add(new SideMenuPanel(2, browser), BorderLayout.WEST);
@@ -146,7 +149,8 @@ public class DepositPage extends Page {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);

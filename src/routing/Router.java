@@ -10,12 +10,14 @@ import data.SubmitResult;
 /**
  * Routes user route requests to the designated controllers + methods
  */
-public class Router {
+public class Router 
+{
     private RouteConfig routerConfig;
     private static final String GET_REQUESTS_KEY = "getRequests";
     private static final String POST_REQUESTS_KEY = "postRequests";
 
-    public Router() {
+    public Router() 
+    {
         routerConfig = new RouteConfig();
     }
 
@@ -23,13 +25,15 @@ public class Router {
      * Redirects the users browser to a new page/route
      * @param route the route that the users browser should be redirected to
      */
-    public void redirect(String route) {
+    public void redirect(String route) 
+    {
         HashMap<String, Route> getRequests = routerConfig.getConfig().get(GET_REQUESTS_KEY);
 
         invokeMethod(getRequests, route, null);
     }
 
-    public void redirect(String route, SubmitData submitData) {
+    public void redirect(String route, SubmitData submitData) 
+    {
         HashMap<String, Route> getRequests = routerConfig.getConfig().get(GET_REQUESTS_KEY);
 
         invokeMethod(getRequests, route, submitData);
@@ -41,7 +45,8 @@ public class Router {
      * @param submitData the submit data that the desired controller should work with
      * @return the submit result with the outcome/result that the controller returned
      */
-    public SubmitResult submit(String route, SubmitData submitData) {
+    public SubmitResult submit(String route, SubmitData submitData) 
+    {
         HashMap<String, Route> postRequests = routerConfig.getConfig().get(POST_REQUESTS_KEY);
 
         Object result = invokeMethod(postRequests, route, submitData);
@@ -60,7 +65,8 @@ public class Router {
      * @param submitData the submit data if there is any that is given to the controllers method as a parameter
      * @return the result/outcome object of the called method
      */
-    private Object invokeMethod(HashMap<String, Route> routeMap, String route, SubmitData submitData) {
+    private Object invokeMethod(HashMap<String, Route> routeMap, String route, SubmitData submitData) 
+    {
         if (!routeMap.containsKey(route)) {
             Core.instance().displayErrorDialog("Route not found: " + route);
             return "";

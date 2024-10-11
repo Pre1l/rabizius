@@ -5,10 +5,12 @@ import java.util.Map;
 
 import core.Core;
 
-public abstract class Model {
+public abstract class Model 
+{
     private static Connection conn;
     
-    public static void connect() {
+    public static void connect() 
+    {
         String url = "jdbc:mariadb://rabizius.softanium.dev/rabizius";
         String user = "rabizius";
         String password = "jXqM6YsK4siiFYHq6dKHBKEXxzePAkdsgbtdEndKbEPytF2YBgyLafJjPYixmDQ4agwAFmpVk3ipKGzJMYsZhVtxXzAx63MDwzXgnwTVBPXKzPSE88rwm3MMdfDYY5w3";
@@ -24,7 +26,8 @@ public abstract class Model {
         }
     }
 
-    public static void disconnect() {
+    public static void disconnect() 
+    {
         try {
             if (conn != null) {
                 conn.close();
@@ -35,7 +38,8 @@ public abstract class Model {
         }
     }
 
-    protected static ResultSet getData(String table, String[] columns, Map<String, String> conditions, boolean expectSingle) {
+    protected static ResultSet getData(String table, String[] columns, Map<String, String> conditions, boolean expectSingle) 
+    {
         ResultSet resultSet = null;
         StringBuilder query = new StringBuilder("SELECT ");
 
@@ -71,7 +75,8 @@ public abstract class Model {
         return resultSet;
     }
 
-    protected static boolean setData(String table, Map<String, String> conditions, Map<String, String> updates) {
+    protected static boolean setData(String table, Map<String, String> conditions, Map<String, String> updates) 
+    {
         StringBuilder query = new StringBuilder("UPDATE " + table + " SET ");
         boolean firstUpdate = true;
         for (String key : updates.keySet()) {
@@ -103,7 +108,8 @@ public abstract class Model {
         return false;
     }
 
-    protected static boolean addData(String table, Map<String, String> data) {
+    protected static boolean addData(String table, Map<String, String> data) 
+    {
         StringBuilder query = new StringBuilder("INSERT INTO " + table + " (");
         StringBuilder values = new StringBuilder(" VALUES (");
         boolean first = true;
@@ -136,7 +142,8 @@ public abstract class Model {
         return false;
     }
 
-    protected static boolean removeData(String table, Map<String, String> conditions) {
+    protected static boolean removeData(String table, Map<String, String> conditions) 
+    {
         StringBuilder query = new StringBuilder("DELETE FROM " + table);
 
         generateWhereClauses(conditions, query);
@@ -157,7 +164,8 @@ public abstract class Model {
         return false;
     }
 
-    protected static Timestamp getServerTimestamp() {
+    protected static Timestamp getServerTimestamp() 
+    {
         String query = "SELECT NOW() AS server_time";
 
         try (Statement stmt = conn.createStatement();
@@ -172,7 +180,8 @@ public abstract class Model {
         return null;
     }
 
-    private static void generateWhereClauses(Map<String, String> conditions, StringBuilder query) {
+    private static void generateWhereClauses(Map<String, String> conditions, StringBuilder query) 
+    {
         if (conditions != null && !conditions.isEmpty()) {
             query.append(" WHERE ");
             boolean firstCondition = true;

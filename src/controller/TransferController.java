@@ -14,18 +14,18 @@ import model.TransactionsModel;
 /**
  * Controls the register page requests
  */
-public class TransferController {
+public class TransferController 
+{
     /**
      * Renders the login page
      */
-    public void render(SubmitData submitData) {
+    public void render(SubmitData submitData) 
+    {
         String userId = submitData.getData("userId");
         String instanceToken = submitData.getData("instanceToken");
         RenderData renderData = new RenderData();
 
-        if (!ControllerCore.authenticateUserInstance(userId, instanceToken)) {
-            return;
-        }
+        if (!ControllerCore.authenticateUserInstance(userId, instanceToken)) return;
 
         renderData.setData("title", "Transfer");
         Core.instance().renderPage("TransferPage", renderData);
@@ -36,7 +36,8 @@ public class TransferController {
      * @param submitData the submit data from the login request like username and password
      * @return the result data for view to react, like errors or if the login was successful
      */
-    public SubmitResult processTransferRequest(SubmitData submitData) {
+    public SubmitResult processTransferRequest(SubmitData submitData) 
+    {
         SubmitResult result = new SubmitResult();
 
         String userId = submitData.getData("userId");

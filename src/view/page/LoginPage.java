@@ -24,16 +24,19 @@ import data.SubmitData;
 import data.SubmitResult;
 import view.browser.Browser;
 
-public class LoginPage extends Page {
+public class LoginPage extends Page 
+{
     private JLabel status = new JLabel("");
     private boolean passwordBtnToggled = false;
     protected BufferedImage backgroundImage = AssetLoader.loadBufferedImage(AssetLoader.BACKGROUND_CIRCULAR_LINES_PATH);
 
-    public LoginPage(Browser browser) {
+    public LoginPage(Browser browser) 
+    {
         super(browser);
     }
 
-    public Page render(RenderData renderData) {
+    public Page render(RenderData renderData) 
+    {
         this.setLayout(new GridBagLayout());
         browser.setMinimumSize(new Dimension(600,700));
 
@@ -110,7 +113,8 @@ public class LoginPage extends Page {
         togglePasswordBtn.setBounds(209, 17, scale, scale);
         togglePasswordBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        togglePasswordBtn.addActionListener(new ActionListener() {
+        togglePasswordBtn.addActionListener(new ActionListener() 
+        {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (passwordBtnToggled == false) {
@@ -185,7 +189,8 @@ public class LoginPage extends Page {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);

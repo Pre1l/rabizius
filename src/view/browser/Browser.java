@@ -21,17 +21,20 @@ import view.page.Page;
 /**
  * Browser for the user to see or interact with the pages/views
  */
-public class Browser extends JFrame {
+public class Browser extends JFrame 
+{
     private Page currentPage = null;
     private Image frameImage;
     private String instanceToken = null;
     private String userId = null;
 
-    public static void init() {
+    public static void init() 
+    {
         FlatCarbonIJTheme.setup();
     }
 
-    public Browser() {
+    public Browser() 
+    {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -49,30 +52,35 @@ public class Browser extends JFrame {
         setVisible(true);
     }
 
-    public void setSession(String userId, String instanceToken) {
+    public void setSession(String userId, String instanceToken) 
+    {
         System.out.println("Set Browser Session");
         this.instanceToken = instanceToken;
         this.userId = userId;
     }
 
-    public void resetSession() {
+    public void resetSession() 
+    {
         System.out.println("Reset Browser Session");
         userId = null;
         instanceToken = null;
     }
 
-    public SubmitData getSession() {
+    public SubmitData getSession() 
+    {
         SubmitData data = new SubmitData();
         data.setData("instanceToken", instanceToken);
         data.setData("userId", userId);
         return data;
     }
 
-    public void displayErrorDialog(String errorMessage) {
+    public void displayErrorDialog(String errorMessage) 
+    {
         JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
     }
  
-    public Page getCurrentPage() {
+    public Page getCurrentPage() 
+    {
         return currentPage;
     }
 
@@ -81,7 +89,8 @@ public class Browser extends JFrame {
      * @param page the page that should be rendered
      * @param renderData the render data for the page to use
      */
-    public void renderPage(String page, RenderData renderData) {
+    public void renderPage(String page, RenderData renderData) 
+    {
         String title = renderData.getData("title");
         if (title != null) {
             setTitle(title);

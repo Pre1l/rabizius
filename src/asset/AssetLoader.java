@@ -12,7 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import core.Core;
 
-public class AssetLoader {
+public class AssetLoader 
+{
     public static final String FONT_POPPINS_MEDIUM_PATH = "font/Poppins/Poppins-Medium.ttf";
     public static final String FONT_POPPINS_BOLD_PATH = "font/Poppins/Poppins-Bold.ttf";
     public static final String FONT_FINDEL_PATH = "font/Findel/Findel-Display-Regular.otf";
@@ -44,7 +45,8 @@ public class AssetLoader {
     private static final Map<String, ImageIcon> imageIconCache = new HashMap<>();
     private static final Map<String, BufferedImage> imageCache = new HashMap<>();
 
-    public static ImageIcon loadImageIcon(String path) {
+    public static ImageIcon loadImageIcon(String path) 
+    {
         if (imageIconCache.containsKey(path)) {
             return imageIconCache.get(path);
         }
@@ -65,7 +67,8 @@ public class AssetLoader {
         }
     }
 
-    public static BufferedImage loadBufferedImage(String path) {
+    public static BufferedImage loadBufferedImage(String path) 
+    {
         if (imageCache.containsKey(path)) {
             return imageCache.get(path);
         }
@@ -85,7 +88,8 @@ public class AssetLoader {
         }
     }
 
-    public static Font loadFont(String fontPath) {
+    public static Font loadFont(String fontPath) 
+    {
         try {
             URL fontUrl = AssetLoader.class.getResource(fontPath);
             if (fontUrl == null) {

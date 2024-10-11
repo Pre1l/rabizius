@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class AccountModel extends Model {
-    public static boolean doesAccountNumberExist(String accountNumber) {
+public final class AccountModel extends Model 
+{
+    public static boolean doesAccountNumberExist(String accountNumber) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_number", accountNumber);
         ResultSet result = getData("accounts", new String[]{}, conditions, true);
@@ -18,7 +20,8 @@ public final class AccountModel extends Model {
         return false;
     }
 
-    public static String getAccountIdByAccountNumber(String accountNumber) {
+    public static String getAccountIdByAccountNumber(String accountNumber) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_number", accountNumber);
         ResultSet result = getData("accounts", new String[]{"account_id"}, conditions, true);
@@ -30,7 +33,8 @@ public final class AccountModel extends Model {
         return "";
     }
 
-    public static boolean isAccountDeleted(String accountId) {
+    public static boolean isAccountDeleted(String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"deleted_at"}, conditions, true);
@@ -42,7 +46,8 @@ public final class AccountModel extends Model {
         return false;
     }
 
-    public static boolean updatePin(String accountId, String rawPin) {
+    public static boolean updatePin(String accountId, String rawPin) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
 
@@ -52,7 +57,8 @@ public final class AccountModel extends Model {
         return setData("accounts", conditions, updates);
     }
 
-    public static boolean createAccount(String accountNumber, String pin, AccountType accountType, double startingBalance) {
+    public static boolean createAccount(String accountNumber, String pin, AccountType accountType, double startingBalance) 
+    {
         Map<String, String> data = new HashMap<>();
         data.put("account_number", accountNumber);
         data.put("pin", pin);
@@ -62,7 +68,8 @@ public final class AccountModel extends Model {
         return addData("accounts", data);
     }
 
-    public static boolean deleteAccount(String accountId) {
+    public static boolean deleteAccount(String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
 
@@ -72,7 +79,8 @@ public final class AccountModel extends Model {
         return setData("accounts", conditions, updates);
     }
 
-    public static String getAccountNumber(String accountId) {
+    public static String getAccountNumber(String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"account_number"}, conditions, true);
@@ -84,7 +92,8 @@ public final class AccountModel extends Model {
         return null;
     }
 
-    public static boolean verifyPin(String rawPin, String accountId) {
+    public static boolean verifyPin(String rawPin, String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"pin"}, conditions, true);
@@ -96,7 +105,8 @@ public final class AccountModel extends Model {
         return false;
     }
 
-    public static boolean addBalance(double amount, String accountId) {
+    public static boolean addBalance(double amount, String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"balance"}, conditions, true);
@@ -112,7 +122,8 @@ public final class AccountModel extends Model {
         return false;
     }
 
-    public static boolean subtractBalance(double amount, String accountId) {
+    public static boolean subtractBalance(double amount, String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"balance"}, conditions, true);
@@ -129,7 +140,8 @@ public final class AccountModel extends Model {
         return false;
     }
 
-    public static double getBalance(String accountId) {
+    public static double getBalance(String accountId) 
+    {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("account_id", accountId);
         ResultSet result = getData("accounts", new String[]{"balance"}, conditions, true);

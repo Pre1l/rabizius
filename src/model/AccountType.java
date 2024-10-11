@@ -1,5 +1,9 @@
 package model;
 
-public enum AccountType {
-    BUSINESS, CALLDEPOSIT, GIRO, JUVENILEGIRO
+public enum AccountType 
+{
+    BUSINESS, 
+    CALLDEPOSIT, 
+    GIRO, 
+    JUVENILEGIRO
 }

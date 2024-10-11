@@ -5,10 +5,12 @@ import java.util.HashMap;
 /**
  * Configuration for the get/post request routes
  */
-class RouteConfig {
+class RouteConfig 
+{
     private HashMap<String, HashMap<String, Route>> routes;
 
-    public RouteConfig() {
+    public RouteConfig() 
+    {
         routes = new HashMap<>();
 
         populateRoutes();
@@ -18,14 +20,16 @@ class RouteConfig {
      * Retrieves the routes config
      * @return the hashmap of get/post Request url configs, where each url inside of each request Hashmap have a designated Route Object
      */
-    public HashMap<String, HashMap<String, Route>> getConfig() {
+    public HashMap<String, HashMap<String, Route>> getConfig() 
+    {
         return routes;
     }
 
     /**
      * Populates/loads all routes into the routes attribute
      */
-    private void populateRoutes() {
+    private void populateRoutes() 
+    {
         routes.put("getRequests", new HashMap<>());
         routes.put("postRequests", new HashMap<>());
 

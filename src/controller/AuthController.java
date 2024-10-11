@@ -9,8 +9,10 @@ import model.AccountModel;
 import model.AccountType;
 import model.UserModel;
 
-class AuthController {
-    public static SubmitResult login(String enteredUsername, String enteredPassword) {
+class AuthController 
+{
+    public static SubmitResult login(String enteredUsername, String enteredPassword) 
+    {
         SubmitResult result = new SubmitResult();
 
         if (UserModel.doesUsernameExist(enteredUsername)) {
@@ -32,7 +34,8 @@ class AuthController {
         return result;
     }
 
-    public static SubmitResult register(String enteredUsername, String enteredPassword) {
+    public static SubmitResult register(String enteredUsername, String enteredPassword) 
+    {
         SubmitResult result = new SubmitResult();
 
         String usernameError = validateUsername(enteredUsername);
@@ -64,36 +67,39 @@ class AuthController {
             AccountConnectionsModel.createAccountConnection(AccountModel.getAccountIdByAccountNumber(accountNumber), userId);
             System.out.println("Registered in sucessfully");
             return login(enteredUsername, enteredPassword);
-        } else {
-            result.setStatus(false);
-            result.setData("error", "Something went wrong.");
         }
+
+        result.setStatus(false);
+        result.setData("error", "Something went wrong.");
 
         return result;
     }
 
-    public static String validatePassword(String rawPassword) {
+    public static String validatePassword(String rawPassword) 
+    {
         if (rawPassword.length() < 8) {
             return "Password must be at least 8 characters long.";
         }
         return null;
     }
 
-    public static String validateUsername(String username) {
+    public static String validateUsername(String username) 
+    {
         if (username.length() < 5 || username.length() > 18) {
             return "Username must be between 5 and 18 characters long.";
-        }
-        if (!Pattern.compile("^[a-zA-Z0-9]+$").matcher(username).matches()) {
+        } else if (!Pattern.compile("^[a-zA-Z0-9]+$").matcher(username).matches()) {
             return "Username must contain only alphanumeric characters.";
         }
         return null;
     }
 
-    public static void logout(String userId, String instanceToken) {
+    public static void logout(String userId, String instanceToken) 
+    {
         ControllerCore.deRegisterUserInstance(userId, instanceToken);
     }
 
-    private static String createAccountNumber() {
+    private static String createAccountNumber() 
+    {
         String accountNumber = createAccountNumberHelper();
         while (AccountModel.doesAccountNumberExist(accountNumber)) {
             accountNumber = createAccountNumberHelper();
@@ -101,7 +107,8 @@ class AuthController {
         return accountNumber;
     }
 
-    private static String createAccountNumberHelper() {
+    private static String createAccountNumberHelper() 
+    {
         SecureRandom secureRandom = new SecureRandom();
 
         StringBuilder accountNumber = new StringBuilder();

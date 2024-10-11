@@ -16,14 +16,17 @@ import asset.AssetLoader;
 import data.RenderData;
 import view.browser.Browser;
 
-public class DashboardPage extends Page {
+public class DashboardPage extends Page 
+{
     protected BufferedImage backgroundImage = AssetLoader.loadBufferedImage(AssetLoader.BACKGROUND_SQUARED_PILLARS_PATH);
 
-    public DashboardPage(Browser browser) {
+    public DashboardPage(Browser browser) 
+    {
         super(browser);
     }
 
-    public Page render(RenderData renderData) {
+    public Page render(RenderData renderData) 
+    {
         setLayout(new BorderLayout());
         browser.setMinimumSize(new Dimension(1280, 720));
         add(new SideMenuPanel(0, browser), BorderLayout.WEST);
@@ -88,7 +91,8 @@ public class DashboardPage extends Page {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);

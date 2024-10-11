@@ -17,12 +17,15 @@ import asset.AssetLoader;
 import core.Core;
 import view.browser.Browser;
 
-class SideMenuPanel extends JPanel {
-    public SideMenuPanel(int index, Browser browser) {
+class SideMenuPanel extends JPanel 
+{
+    public SideMenuPanel(int index, Browser browser) 
+    {
         buildSideMenuPanel(index, browser);
     }
 
-    public void buildSideMenuPanel(int index, Browser browser) {
+    public void buildSideMenuPanel(int index, Browser browser) 
+    {
         setOpaque(false);
         Dimension leftPanelDim = getPreferredSize();
         leftPanelDim.width = 250;
@@ -106,7 +109,8 @@ class SideMenuPanel extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));

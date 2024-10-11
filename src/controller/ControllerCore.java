@@ -10,23 +10,27 @@ import java.time.LocalDateTime;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-class ControllerCore {
+class ControllerCore 
+{
     private static final int instanceTokenTimoutIntervalTime = 20;
     private static HashMap<String, String> authHashMap = new HashMap<>();
     public static final int CREDIT_LIMIT = -4000;
 
     // Registers a userID instanceToken pair
-    public static void registerUserInstance(String userId, String instanceToken) {
+    public static void registerUserInstance(String userId, String instanceToken) 
+    {
         authHashMap.put(userId, instanceToken);
     }
 
     // deRegisters (removes) a userID instanceToken pair
-    public static void deRegisterUserInstance(String userId, String instanceToken) {
+    public static void deRegisterUserInstance(String userId, String instanceToken) 
+    {
         authHashMap.remove(userId);
     }
 
     // Generates random Token with timestamp, can be duplicate
-    public static String generateTokenHelper() {
+    public static String generateTokenHelper() 
+    {
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[25];
         random.nextBytes(bytes);
@@ -39,7 +43,8 @@ class ControllerCore {
     }
 
     // returns a valid instanceToken
-    public static String generateToken() {
+    public static String generateToken() 
+    {
         String token = "";
         do {
             token = generateTokenHelper();
@@ -48,7 +53,8 @@ class ControllerCore {
     }
 
     // Checks if the userID instanceToken pair is valid
-    public static boolean authenticateUserInstance(String userId, String instanceToken) {
+    public static boolean authenticateUserInstance(String userId, String instanceToken) 
+    {
         int tokenLength = instanceToken.length();
         String storedToken = authHashMap.get(userId);
         if (storedToken == null || !storedToken.equals(instanceToken)) {
@@ -72,5 +78,4 @@ class ControllerCore {
 
         return true;
     }
-
 }

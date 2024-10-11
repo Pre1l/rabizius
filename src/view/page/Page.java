@@ -7,7 +7,8 @@ import view.browser.Browser;
 
 import java.awt.*;
 
-public abstract class Page extends JPanel {
+public abstract class Page extends JPanel 
+{
     protected Browser browser;
 
     protected static final Font POPPINS_FONT_MEDIUM_XL = AssetLoader.loadFont(AssetLoader.FONT_POPPINS_MEDIUM_PATH).deriveFont(90f);;
@@ -28,11 +29,13 @@ public abstract class Page extends JPanel {
     protected static final Color SOFT_GREEN = new Color(110, 193, 117);
     protected static final Color SOFT_RED = new Color(235,45,58);
 
-    protected Page(Browser browser) {
+    protected Page(Browser browser) 
+    {
         this.browser = browser;
     }
 
-    protected static JPanel getTransparentPanel() {
+    protected static JPanel getTransparentPanel() 
+    {
         JPanel panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
