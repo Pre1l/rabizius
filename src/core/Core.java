@@ -34,9 +34,6 @@ public class Core
     {
         // Init core singleton
         Core.init();
-
-        // Example for a redirect call
-        Core.instance().redirect("/login");
     }
 
     /**
@@ -46,15 +43,7 @@ public class Core
     {
         instance = new Core();
         instance.startRouting();
-        instance.connect();
-    }
-
-    /**
-     * Connects client to the db
-     */
-    private void connect() 
-    {
-        Model.connect();
+        Core.instance().redirect("/database");
     }
 
     /**

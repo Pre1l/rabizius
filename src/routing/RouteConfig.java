@@ -37,6 +37,7 @@ class RouteConfig
         HashMap<String, Route> postRequests = routes.get("postRequests");
 
         // Get Requests
+        getRequests.put("/database", new Route("DatabaseController", "render"));
         getRequests.put("/login", new Route("LoginController", "render"));
         getRequests.put("/register", new Route("RegisterController", "render"));
         getRequests.put("/dashboard", new Route("DashboardController", "render"));
@@ -46,6 +47,7 @@ class RouteConfig
         getRequests.put("/account/delete", new Route("DeleteAccountController", "render"));
 
         // Post/Submit Requests
+        postRequests.put("/database", new Route("DatabaseController", "processDatabaseRequest"));
         postRequests.put("/login", new Route("LoginController", "processLoginRequest"));
         postRequests.put("/register", new Route("RegisterController", "processRegisterRequest"));
         postRequests.put("/withdraw", new Route("WithdrawController", "processWithdrawRequest"));

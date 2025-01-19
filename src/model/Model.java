@@ -9,20 +9,16 @@ public abstract class Model
 {
     private static Connection conn;
     
-    public static void connect() 
+    public static boolean connect(String url, String user, String password) 
     {
-        String url = "jdbc:mariadb://rabizius.softanium.dev/rabizius";
-        String user = "rabizius";
-        String password = "jXqM6YsK4siiFYHq6dKHBKEXxzePAkdsgbtdEndKbEPytF2YBgyLafJjPYixmDQ4agwAFmpVk3ipKGzJMYsZhVtxXzAx63MDwzXgnwTVBPXKzPSE88rwm3MMdfDYY5w3";
-
         try {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to database successfully.");
+            return true;
         } catch (SQLException e) {
             System.out.println("SQL Exception: " + e.getMessage());
-            Core.instance().displayErrorDialog("Unable to connect to database, shutting down.");
-            Core.shutdown();
+            return false;
         }
     }
 
